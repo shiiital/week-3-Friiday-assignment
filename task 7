@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lee Minho · Personal Page</title>
+<style>
+  /* 1. CSS Variables + Dark Mode */
+  :root {
+    --primary: #14b8a6;
+    --accent: #0f766e;
+    --bg: #f0fdfa;
+    --text: #0f172a;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #0d9488;
+      --accent: #2dd4bf;
+      --bg: #0f172a;
+      --text: #f0fdfa;
+      --radius: 12px;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: sans-serif;
+    line-height: 1.6;
+  }
+
+  /* 2. Fixed Navigation Bar */
+  nav {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    background: #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    z-index: 1000;
+  }
+  nav span {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--primary); }
+
+  /* 3. Hero Section with Fade-in Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero {
+    padding: 120px 20px 60px; /* offset for fixed nav */
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+  }
+  .hero h1 { font-size: 2rem; margin-bottom: 12px; }
+  .hero p { font-size: 1.1rem; color: var(--accent); }
+
+  /* 4. Responsive Grid of Skill Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .card {
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px;
+    background: var(--bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(20, 184, 166, 0.3);
+  }
+  .card[data-icon]::before {
+    content: attr(data-icon) '  ';
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* 5. Sticky Section Heading */
+  .sticky-h2 {
+    position: sticky;
+    top: 60px; /* below nav */
+    background: var(--bg);
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 500;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--accent);
+    color: white;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <span>Shital</span>
+    <div>
+      <a href="#">Home</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Hello, I am Shital Achhami</h1>
+    <p>Computer Science Major · Gachon University · Week 3 CSS Advanced</p>
+  </section>
+
+  <section class="skills-section" id="skills">
+    <h2 class="sticky-h2">My Skills</h2>
+    <div class="grid">
+      <div class="card" data-icon="🌐">HTML5 — Structure</div>
+      <div class="card" data-icon="🎨">CSS3 — Styling</div>
+      <div class="card" data-icon="⚡">JavaScript — Behaviour</div>
+      <div class="card" data-icon="🖥️">Python — Programming</div>
+      <div class="card" data-icon="📊">Data Analysis</div>
+      <div class="card" data-icon="🤖">Machine Learning</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Contact: shitalshital1887@gmail.com · GitHub: github.com/shiital</p>
+  </footer>
+</body>
+</html>
+
+    transition: transform
